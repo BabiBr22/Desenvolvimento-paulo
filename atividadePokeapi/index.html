@@ -1,27 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
+    <!-- Define a codificação dos caracteres e a viewport para dispositivos móveis -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Info</title>
+    <title>PokéApi</title>
+    <!-- Inclui o arquivo CSS para estilização da página -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png" type="image/x-icon">
 </head>
 <body>
+    <!-- Cabeçalho da página com o título -->
     <header>
-        <h1>Pokémon Information</h1>
+        <h1>Atividade PokéApi</h1>
     </header>
     
+    <!-- Conteúdo principal da página -->
     <main>
-        <div class="controls">
-            <input type="text" id="pokemonName" placeholder="Enter Pokémon name" />
-            <button id="searchPokemon">Search</button>
-            <button id="loadPokemon">Load More Pokémon</button>
+        <!-- Controles para busca e carregamento de Pokémon -->
+        <div class="controles">
+            <!-- Campo de texto para digitar o nome do Pokémon -->
+            <input type="text" id="nomePokemon" placeholder="Digite o nome do Pokémon" />
+            <!-- Botão para buscar Pokémon pelo nome -->
+            <button id="pesquisarPokemon">Pesquisar</button>
+            <!-- Botão para carregar mais Pokémon -->
+            <button id="carregarPokemon">Mostrar mais Pokémon</button>
         </div>
-        <div id="pokemon-container">
-            <!-- Pokémon details will be displayed here -->
+        <!-- Div que vai conter os cartões dos Pokémon -->
+        <div id="container-pokemon">
+            <!-- Os detalhes dos Pokémon serão exibidos aqui -->
         </div>
     </main>
     
+    <!-- Inclui o arquivo JavaScript para manipular a lógica da página -->
     <script src="script.js"></script>
 </body>
 </html>
