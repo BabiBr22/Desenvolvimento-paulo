@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #000000;
+}
+
+#container-pokemon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.cartao-pokemon {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.2s;
+}
+
+.cartao-pokemon:hover {
+    transform: scale(1.05);
+}
+
+.cartao-pokemon img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+/* Nova estilização para o contêiner dos controles */
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre os elementos */
+    margin-bottom: 20px; /* Espaçamento entre os controles e os Pokémon */
+}
+
+/* Estilo cartoon para o campo de busca */
+input[type="text"] {
+    padding: 10px 20px; /* Espaçamento interno maior para o efeito de botão */
+    border: 3px solid #df2b2b; /* Cor vibrante inspirada no Pikachu */
+    border-radius: 5px; /* Borda bem arredondada para um estilo mais divertido */
+    background-color: #fff; /* Cor de fundo branca */
+    font-size: 16px; /* Texto um pouco maior */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar um efeito 3D */
+    color: #555; /* Cor do texto */
+    outline: none; /* Remove a borda padrão ao focar */
+    transition: all 0.3s ease-in-out; /* Transição suave para os efeitos */
+    width: 250px; /* Largura um pouco maior para melhor visualização */
+}
+
+/* Efeito ao focar no campo de texto */
+input[type="text"]:focus {
+    border-color: #ff6347; /* Muda a cor da borda ao focar */
+    box-shadow: 0 0 15px rgba(255, 99, 71, 0.7); /* Efeito de brilho ao focar */
+}
+
+/* Adicionando ícone de lupa dentro do campo de busca */
+input[type="text"]::placeholder {
+    color: #999; /* Cor mais clara para o texto placeholder */
+    font-style: italic; /* Estilo cursivo para o texto placeholder */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #8f2626;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #a83232;
+}
