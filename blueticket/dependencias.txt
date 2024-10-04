@@ -1,0 +1,9 @@
+npm install express cors body-parser mongoose nodemon --save
+
+
+
+Express: Um framework web para Node.js.
+Cors: Um pacote que permite controlar as permissões de origem cruzada para sua API.
+Body-parser: Um middleware para analisar o corpo das requisições.
+Mongoose: Caso você esteja utilizando MongoDB como banco de dados.
+Nodemon: Para reiniciar o servidor automaticamente durante o desenvolvimento.
