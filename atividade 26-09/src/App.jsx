@@ -26,16 +26,16 @@ function App() {
     return (
         <div>
             <header>
-                <h1>Movie Search</h1>
+                <h1>Buscador de filmes</h1>
             </header>
             <div className="container">
                 <input 
                     type="text" 
                     value={searchTerm} 
                     onChange={(e) => setSearchTerm(e.target.value)} 
-                    placeholder="Search for movies..."
+                    placeholder="Busque por filmes..."
                 />
-                <button onClick={searchMovies}>Search</button>
+                <button onClick={searchMovies}>Procurar</button>
                 <div className="movie-list">
                     {filteredMovies.length > 0 ? (
                         filteredMovies.map(movie => (
@@ -45,7 +45,7 @@ function App() {
                             </Link>
                         ))
                     ) : (
-                        <p>No movies found</p>
+                        <p>Nenhum filme encontrado</p>
                     )}
                 </div>
             </div>

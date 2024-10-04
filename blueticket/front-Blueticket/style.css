@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #007bff; /* Cor de fundo azul */
+}
+
+.container {
+    background-color: white; /* Fundo da div branca */
+    padding: 20px;
+    border-radius: 8px; /* Cantos arredondados */
+    max-width: 600px; /* Largura máxima da div */
+    margin: auto; /* Centraliza a div */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para a div */
+}
+
+h1,
+h2 {
+    color: #333;
+    text-align: center; /* Centraliza o título */
+}
+
+form {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Organiza os campos em coluna */
+    align-items: center; /* Centraliza os campos */
+}
+
+input,
+select {
+    margin: 10px 0;
+    padding: 8px;
+    width: 100%; /* Largura total da div */
+    max-width: 300px; /* Largura máxima dos campos */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Cantos arredondados nos inputs */
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff; /* Cor azul do botão */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px; /* Cantos arredondados no botão */
+    width: 100%; /* Largura total da div */
+    max-width: 300px; /* Largura máxima do botão */
+}
+
+button:hover {
+    background-color: #0056b3; /* Tom de azul mais escuro ao passar o mouse */
+}
+
+#events-list {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 0; /* Remove margens para a esquerda */
+}
+
+#events-list li {
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    cursor: pointer; /* Indica que o item é clicável */
+}
+
+.event-details {
+    background-color: #f8f9fa; /* Fundo claro */
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    border-radius: 4px;
+}
