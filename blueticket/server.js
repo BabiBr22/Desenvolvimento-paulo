@@ -3,8 +3,8 @@
 // Importa as dependências
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors'); // Importa o pacote cors
-const { getAllEvents, addEvent, getEventById, deleteEventById } = require('./database'); // Adiciona deleteEventById
+const cors = require('cors');
+const { getAllEvents, addEvent, getEventById, deleteEventById } = require('./database');
 
 // Inicializa o aplicativo Express
 const app = express();
@@ -29,7 +29,8 @@ app.post('/api/events', (req, res) => {
         description: req.body.description,
         date: req.body.date,
         location: req.body.location,
-        category: req.body.category
+        category: req.body.category,
+        imageUrl: req.body.imageUrl // Altera para usar URL da imagem
     };
 
     const createdEvent = addEvent(newEvent); // Adiciona ao array
@@ -38,13 +39,13 @@ app.post('/api/events', (req, res) => {
 
 // Rota para obter detalhes de um evento específico pelo ID
 app.get('/api/events/:id', (req, res) => {
-    const eventId = parseInt(req.params.id, 10); // Obtém o ID da URL
-    const event = getEventById(eventId); // Busca o evento pelo ID
+    const eventId = parseInt(req.params.id, 10);
+    const event = getEventById(eventId);
 
     if (event) {
-        res.json(event); // Se encontrar, retorna o evento
+        res.json(event);
     } else {
-        res.status(404).json({ message: 'Evento não encontrado' }); // Caso não encontre
+        res.status(404).json({ message: 'Evento não encontrado' });
     }
 });
 
@@ -54,9 +55,9 @@ app.delete('/api/events/:id', (req, res) => {
     const deleted = deleteEventById(eventId);
 
     if (deleted) {
-        res.status(204).send(); // Retorna 204 No Content se a exclusão for bem-sucedida
+        res.status(204).send();
     } else {
-        res.status(404).json({ message: 'Evento não encontrado' }); // Caso não encontre
+        res.status(404).json({ message: 'Evento não encontrado' });
     }
 });
 
