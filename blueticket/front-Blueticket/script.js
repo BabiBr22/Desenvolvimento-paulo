@@ -5,11 +5,11 @@ let currentEvent = null;
 
 // Função para listar todos os eventos
 const fetchEvents = async () => {
-    console.log('Buscando eventos...');
+    //console.log('Buscando eventos...');
     try {
         const response = await fetch(API_URL);
         const events = await response.json();
-        console.log(events); // Verifique a estrutura dos dados
+       // console.log('Eventos recebidos:', events); // Verifique a estrutura dos dados
 
         const eventsList = document.getElementById('events-list');
 
@@ -17,17 +17,17 @@ const fetchEvents = async () => {
         eventsList.innerHTML = '';
 
         events.forEach(event => {
-            console.log(event); // Verifique cada evento individualmente
+            console.log('Evento:', event); // Verifique cada evento individualmente
             const li = document.createElement('li');
-            li.innerText = `${event.title} - ${event.location} - R$ ${event.price || '0,00'}`; // Preço padrão se não definido
+            li.innerText = `${event.title} - ${event.location} - R$ ${event.price || 'N/A'}`; // Preço padrão se não definido
             li.addEventListener('click', () => toggleEventDetails(event)); // Alterna detalhes ao clicar
-
+            //console.log(price)
             // Cria o botão de excluir
             const deleteButton = document.createElement('button');
             deleteButton.innerText = 'Excluir';
             deleteButton.addEventListener('click', async (e) => {
                 e.stopPropagation(); // Impede a chamada do evento de clique do evento
-                await deleteEvent(event.id);
+                await deleteEvent(event._id); // Use o _id se a chave do evento for _id
                 fetchEvents(); // Atualiza a lista após a exclusão
                 hideEventDetails(); // Oculta os detalhes do evento
             });
@@ -49,14 +49,14 @@ const addEvent = async (event) => {
         description: document.getElementById('description').value,
         location: document.getElementById('location').value,
         imageUrl: document.getElementById('imageUrl').value, // Captura a URL da imagem
-        price: document.getElementById('price').value // Captura o preço diretamente
+        price: parseFloat(document.getElementById('price').value) // Converte o preço para um número
     };
 
     console.log('Novo evento:', newEvent); // Verifique o novo evento antes de enviar
 
     // Verifica se todos os campos obrigatórios estão preenchidos
-    if (!newEvent.title || !newEvent.description || !newEvent.location || !newEvent.price) {
-        console.error('Por favor, preencha todos os campos!');
+    if (!newEvent.title || !newEvent.description || !newEvent.location || isNaN(newEvent.price)) {
+        console.error('Por favor, preencha todos os campos obrigatórios corretamente!');
         return; // Impede o envio se campos obrigatórios não forem preenchidos
     }
 
@@ -96,7 +96,7 @@ const showEventDetails = (event) => {
     document.getElementById('detail-title').innerText = event.title;
     document.getElementById('detail-description').innerText = event.description;
     document.getElementById('detail-location').innerText = event.location;
-    document.getElementById('detail-price').innerText = `R$ ${event.price || '0,00'}`; // Preço padrão se não definido
+    document.getElementById('detail-price').innerText = `R$ ${event.price || 'N/A'}`; // Preço padrão se não definido
 
     const detailImage = document.getElementById('detail-image');
     if (event.imageUrl) {

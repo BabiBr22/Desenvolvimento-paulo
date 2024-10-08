@@ -25,15 +25,16 @@ app.post('/api/events', (req, res) => {
   const newEvent = {
     title: req.body.title,
     description: req.body.description,
-    date: req.body.date,
     location: req.body.location,
-    category: req.body.category,
-    imageUrl: req.body.imageUrl // Altera para usar URL da imagem
+    imageUrl: req.body.imageUrl,
+    price: parseFloat(req.body.price) || 0  // Certifique-se de que o preço está sendo recebido e tratado corretamente
   };
 
-  const createdEvent = addEvent(newEvent); // Adiciona ao array
+  const createdEvent = addEvent(newEvent); // Função para adicionar o evento
   res.status(201).json(createdEvent); // Retorna o evento criado
 });
+
+
 
 // Rota para obter detalhes de um evento específico pelo ID
 app.get('/api/events/:id', (req, res) => {
