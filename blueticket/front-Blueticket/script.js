@@ -17,7 +17,7 @@ const fetchEvents = async () => {
         eventsList.innerHTML = '';
 
         events.forEach(event => {
-            console.log('Evento:', event); // Verifique cada evento individualmente
+            //console.log('Evento:', event); // Verifique cada evento individualmente
             const li = document.createElement('li');
             li.innerText = `${event.title} - ${event.location} - R$ ${event.price || 'N/A'}`; // Preço padrão se não definido
             li.addEventListener('click', () => toggleEventDetails(event)); // Alterna detalhes ao clicar
@@ -27,7 +27,8 @@ const fetchEvents = async () => {
             deleteButton.innerText = 'Excluir';
             deleteButton.addEventListener('click', async (e) => {
                 e.stopPropagation(); // Impede a chamada do evento de clique do evento
-                await deleteEvent(event._id); // Use o _id se a chave do evento for _id
+                await deleteEvent(event.id); // Use o _id se a chave do evento for _id
+                console.log(event.id)
                 fetchEvents(); // Atualiza a lista após a exclusão
                 hideEventDetails(); // Oculta os detalhes do evento
             });
@@ -52,11 +53,11 @@ const addEvent = async (event) => {
         price: parseFloat(document.getElementById('price').value) // Converte o preço para um número
     };
 
-    console.log('Novo evento:', newEvent); // Verifique o novo evento antes de enviar
+    //console.log('Novo evento:', newEvent); // Verifique o novo evento antes de enviar
 
     // Verifica se todos os campos obrigatórios estão preenchidos
     if (!newEvent.title || !newEvent.description || !newEvent.location || isNaN(newEvent.price)) {
-        console.error('Por favor, preencha todos os campos obrigatórios corretamente!');
+       // console.error('Por favor, preencha todos os campos obrigatórios corretamente!');
         return; // Impede o envio se campos obrigatórios não forem preenchidos
     }
 
@@ -73,7 +74,8 @@ const addEvent = async (event) => {
             document.getElementById('event-form').reset(); // Limpar o formulário
             fetchEvents(); // Recarregar a lista de eventos
         } else {
-            console.error('Erro ao adicionar evento:', response.statusText);
+            //console.error('Erro ao adicionar evento:', response.statusText);
+            console.error('Erro ao adicionar evento:');
         }
     } catch (error) {
         console.error('Erro ao adicionar evento:', error);
@@ -127,6 +129,7 @@ const deleteEvent = async (id) => {
         if (!response.ok) {
             console.error('Erro ao excluir evento:', response.statusText);
         }
+        console.log(id)
     } catch (error) {
         console.error('Erro ao excluir evento:', error);
     }

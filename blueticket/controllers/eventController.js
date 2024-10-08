@@ -32,3 +32,18 @@ exports.getEventById = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+// Excluir um evento (DELETE)
+exports.deleteEventById = async (req, res) => {
+  try {
+    const event = await Event.findByIdAndDelete(req.params.id); // Usa findByIdAndDelete para localizar e remover o evento
+
+    if (!event) {
+      return res.status(404).json({ message: 'Evento não encontrado' });
+    }
+
+    res.status(204).send(); // Retorna um status 204 sem conteúdo
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

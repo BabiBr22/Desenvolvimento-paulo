@@ -11,4 +11,8 @@ router.get('/events', eventController.getAllEvents);
 // Rota para obter detalhes de um evento por ID
 router.get('/events/:id', eventController.getEventById);
 
+// Rota para excluir um evento por ID
+router.delete('/events/:id', eventController.deleteEventById);
+
+
 module.exports = router;
