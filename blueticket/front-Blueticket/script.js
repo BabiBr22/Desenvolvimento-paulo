@@ -9,14 +9,17 @@ const fetchEvents = async () => {
     try {
         const response = await fetch(API_URL);
         const events = await response.json();
+        console.log(events); // Verifique a estrutura dos dados
+
         const eventsList = document.getElementById('events-list');
 
         // Limpar lista antes de adicionar novos eventos
         eventsList.innerHTML = '';
 
         events.forEach(event => {
+            console.log(event); // Verifique cada evento individualmente
             const li = document.createElement('li');
-            li.innerText = `${event.title} - ${new Date(event.date).toLocaleString()} - ${event.location}`;
+            li.innerText = `${event.title} - ${event.location} - R$ ${event.price || '0,00'}`; // Preço padrão se não definido
             li.addEventListener('click', () => toggleEventDetails(event)); // Alterna detalhes ao clicar
 
             // Cria o botão de excluir
@@ -44,11 +47,18 @@ const addEvent = async (event) => {
     const newEvent = {
         title: document.getElementById('title').value,
         description: document.getElementById('description').value,
-        date: document.getElementById('date').value,
         location: document.getElementById('location').value,
-        category: document.getElementById('category').value,
-        imageUrl: document.getElementById('imageUrl').value // Captura a URL da imagem
+        imageUrl: document.getElementById('imageUrl').value, // Captura a URL da imagem
+        price: document.getElementById('price').value // Captura o preço diretamente
     };
+
+    console.log('Novo evento:', newEvent); // Verifique o novo evento antes de enviar
+
+    // Verifica se todos os campos obrigatórios estão preenchidos
+    if (!newEvent.title || !newEvent.description || !newEvent.location || !newEvent.price) {
+        console.error('Por favor, preencha todos os campos!');
+        return; // Impede o envio se campos obrigatórios não forem preenchidos
+    }
 
     try {
         const response = await fetch(API_URL, {
@@ -85,8 +95,8 @@ const toggleEventDetails = (event) => {
 const showEventDetails = (event) => {
     document.getElementById('detail-title').innerText = event.title;
     document.getElementById('detail-description').innerText = event.description;
-    document.getElementById('detail-date').innerText = new Date(event.date).toLocaleString();
     document.getElementById('detail-location').innerText = event.location;
+    document.getElementById('detail-price').innerText = `R$ ${event.price || '0,00'}`; // Preço padrão se não definido
 
     const detailImage = document.getElementById('detail-image');
     if (event.imageUrl) {
@@ -122,5 +132,5 @@ const deleteEvent = async (id) => {
     }
 };
 
-// Buscar eventos ao carregar a página
+// Carrega os eventos ao iniciar a página
 fetchEvents();

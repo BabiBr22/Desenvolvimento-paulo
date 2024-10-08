@@ -24,7 +24,9 @@ exports.getAllEvents = async (req, res) => {
 exports.getEventById = async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);
-    if (!event) return res.status(404).json({ message: 'Evento não encontrado' });
+    if (!event) {
+      return res.status(404).json({ message: 'Evento não encontrado' });
+    }
     res.status(200).json(event);
   } catch (error) {
     res.status(500).json({ message: error.message });

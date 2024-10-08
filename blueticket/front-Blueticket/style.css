@@ -62,13 +62,27 @@ button:hover {
     padding: 5px;
     border: 1px solid #ccc;
     margin-bottom: 5px;
-    cursor: pointer; /* Indica que o item é clicável */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+}
+
+#events-list li:hover {
+    background-color: #f1f1f1; /* Fundo mais claro ao passar o mouse */
 }
 
 .event-details {
-    background-color: #f8f9fa; /* Fundo claro */
-    padding: 10px;
+    background-color: #f9f9f9; /* Fundo mais claro para detalhes do evento */
     border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px; /* Cantos arredondados para detalhes */
     margin-top: 20px;
-    border-radius: 4px;
 }
+
+.event-details h3 {
+    margin-top: 0; /* Remove margem superior do título dos detalhes */
+}
+
+#detail-image {
+    max-width: 100%; /* Imagem se ajusta à largura do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+}
+

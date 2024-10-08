@@ -14,13 +14,13 @@
         
         <form id="event-form">
             <input type="text" id="title" placeholder="Título" required>
-            <textarea id="description" placeholder="Descrição" required></textarea>
-            <input type="datetime-local" id="date" required>
+            <input type="text" id="description" placeholder="Descrição" required>
             <input type="text" id="location" placeholder="Localização" required>
-            <input type="text" id="category" placeholder="Categoria" required>
-            <input type="url" id="imageUrl" placeholder="URL da Imagem" required> <!-- Campo para URL da imagem -->
+            <input type="text" id="imageUrl" placeholder="URL da Imagem">
+            <input type="text" id="price" placeholder="Preço" required>
             <button type="submit">Adicionar Evento</button>
         </form>
+        
 
         <h2>Eventos Cadastrados</h2>
         <ul id="events-list"></ul>
@@ -29,8 +29,8 @@
             <h3>Detalhes do Evento</h3>
             <p><strong>Título:</strong> <span id="detail-title"></span></p>
             <p><strong>Descrição:</strong> <span id="detail-description"></span></p>
-            <p><strong>Data:</strong> <span id="detail-date"></span></p>
             <p><strong>Localização:</strong> <span id="detail-location"></span></p>
+            <p><strong>Preço:</strong> <span id="detail-price"></span></p> <!-- Campo para mostrar o preço -->
             <div id="detail-image-container" style="margin-top: 10px;">
                 <img id="detail-image" alt="Imagem do Evento" style="max-width: 100%; display: none;">
             </div>

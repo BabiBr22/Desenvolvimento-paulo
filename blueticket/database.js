@@ -4,19 +4,19 @@
 let events = [
     {
         id: 1,
-        title: "Concerto de Rock",
-        description: "Evento musical com várias bandas",
-        date: "2024-10-10T20:00:00",
-        location: "Estádio Municipal",
-        category: "artistic"
+        nome: "Concerto de Rock",
+        local: "Estádio Municipal",
+        descricao: "Evento musical com várias bandas",
+        preco: 500,
+        foto: "concerto.jpg"
     },
     {
         id: 2,
-        title: "Campeonato de Futebol",
-        description: "Partidas emocionantes entre os melhores times.",
-        date: "2024-11-15T15:00:00",
-        location: "Estádio Central",
-        category: "sport"
+        nome: "Campeonato de Futebol",
+        local: "Estádio Central",
+        descricao: "Partidas emocionantes entre os melhores times.",
+        preco: 100,
+        foto: "futebol.jpg"
     }
 ];
 
@@ -27,12 +27,10 @@ const getAllEvents = () => {
 
 // Função para adicionar um novo evento
 const addEvent = (newEvent) => {
-    // Gera um ID baseado no maior ID existente
     newEvent.id = events.reduce((maxId, event) => Math.max(event.id, maxId), 0) + 1;
     events.push(newEvent);
     return newEvent;
 };
-
 
 // Função para encontrar um evento por ID
 const getEventById = (id) => {
@@ -48,7 +46,6 @@ const deleteEventById = (id) => {
     }
     return false; // Retorna falso se o evento não foi encontrado
 };
-
 
 // Exporta todas as funções necessárias
 module.exports = { getAllEvents, addEvent, getEventById, deleteEventById };
