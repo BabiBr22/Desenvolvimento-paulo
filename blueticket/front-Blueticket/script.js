@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api/events'; // Certifique-se de que sua API está rodando
+const API_URL = 'http://localhost:5001/api/events'; // Certifique-se de que sua API está rodando
 
 // Variável para armazenar o evento atualmente aberto
 let currentEvent = null;
